@@ -8,7 +8,7 @@ class Solution:
 
         :param nums: the input phone number string
         :param target: the number we want to get with
-        :return:
+        :return: a list of results that conform to this rule
         """
         result = []
         self.helper(nums, target, "", 0, 0, 0, result)
@@ -16,6 +16,17 @@ class Solution:
         return result
 
     def helper(self, num: str, target: int, temp: str, pos: int, current: int, last: int, result: List[str]):
+        """
+
+        :param num: the input digits string
+        :param target: the number to find
+        :param temp: temp result string
+        :param pos: current pointer position to the input string
+        :param current: calculated result
+        :param last: use to calculate * and / that need to change order
+        :param result: the result list to store all valid result strings
+        :return: None
+        """
         if pos == len(num):
             if current == target:
                 result.append(temp)
@@ -40,4 +51,6 @@ class Solution:
 if __name__ == '__main__':
     number = '7765332111'
     S = Solution()
-    S.lucky_numbers(number, 888)
+
+    results = S.lucky_numbers(number, 888)
+    print(len(results))
